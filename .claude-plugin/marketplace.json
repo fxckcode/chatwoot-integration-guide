@@ -6,9 +6,9 @@
   },
   "plugins": [
     {
-      "name": "chatwoot",
+      "name": "chatwoot-skills",
       "source": "./",
-      "description": "Chatwoot integration skills for AI agents",
+      "description": "Agent skills for Chatwoot — setup, channels, live chat, features, advanced, Captain AI, API, reports, migrations, self-hosted",
       "version": "1.0.0"
     }
   ]

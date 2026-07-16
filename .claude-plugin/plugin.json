@@ -1,7 +1,7 @@
 {
-  "name": "chatwoot",
+  "name": "chatwoot-skills",
   "version": "1.0.0",
-  "description": "Comprehensive Chatwoot integration skill — setup channels, live chat widget, Captain AI, webhooks, API, and migrations. Use when integrating Chatwoot into any system.",
+  "description": "Agent skills for Chatwoot. Integrate Chatwoot into any system — channels, live chat, Captain AI, webhooks, API, setup, reports, migrations, and self-hosted deployment.",
   "author": {
     "name": "Diego Duran",
     "url": "https://github.com/fxckcode"
