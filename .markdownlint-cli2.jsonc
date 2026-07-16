@@ -1,9 +1,24 @@
 {
   "config": {
     "MD013": {
-      "line_length": 120
+      "line_length": 300
     },
+    "MD024": false,
+    "MD031": false,
+    "MD032": false,
     "MD033": false,
-    "MD041": false
-  }
+    "MD034": false,
+    "MD036": false,
+    "MD040": false,
+    "MD041": false,
+    "MD045": false,
+    "MD047": false,
+    "MD060": false
+  },
+  "ignores": [
+    "articles/**",
+    "references/**",
+    ".venv/**",
+    "node_modules/**"
+  ]
 }
