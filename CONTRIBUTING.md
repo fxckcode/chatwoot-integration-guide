@@ -5,7 +5,7 @@ Thanks for your interest in contributing to the Chatwoot Integration Guide.
 ## Development
 
 1. Fork the repository
-2. Clone your fork: `git clone https://github.com/your-user/chatwoot-integration-guide.git`
+2. Clone your fork: `git clone https://github.com/your-user/chatwoot-skills.git`
 3. Create a branch: `git checkout -b feat/my-contribution`
 
 ## Conventions

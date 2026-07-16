@@ -1,7 +1,7 @@
 # Chatwoot Integration Guide 🚀
 
-[![CI](https://github.com/fxckcode/chatwoot-integration-guide/actions/workflows/ci.yml/badge.svg)](https://github.com/fxckcode/chatwoot-integration-guide/actions/workflows/ci.yml)
-[![License](https://img.shields.io/github/license/fxckcode/chatwoot-integration-guide)](LICENSE)
+[![CI](https://github.com/fxckcode/chatwoot-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/fxckcode/chatwoot-skills/actions/workflows/ci.yml)
+[![License](https://img.shields.io/github/license/fxckcode/chatwoot-skills)](LICENSE)
 [![Chatwoot](https://img.shields.io/badge/Chatwoot-7B2FBE?logo=chatwoot)](https://www.chatwoot.com)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Spec-7B2FBE)](https://agentskills.io/specification)
 
@@ -14,14 +14,14 @@ These skills follow the [Agent Skills specification](https://agentskills.io/spec
 ### via npx skills
 
 ```bash
-npx skills add fxckcode/chatwoot-integration-guide
+npx skills add fxckcode/chatwoot-skills
 ```
 
 Or using the full URL:
 
 ```bash
-npx skills add https://github.com/fxckcode/chatwoot-integration-guide
-npx skills add git@github.com:fxckcode/chatwoot-integration-guide.git
+npx skills add https://github.com/fxckcode/chatwoot-skills
+npx skills add git@github.com:fxckcode/chatwoot-skills.git
 ```
 
 ### via Claude Code
@@ -29,7 +29,7 @@ npx skills add git@github.com:fxckcode/chatwoot-integration-guide.git
 Add the contents of this repo to a `.claude/skills/` directory in your project root:
 
 ```bash
-git clone https://github.com/fxckcode/chatwoot-integration-guide.git /tmp/chatwoot-skills
+git clone https://github.com/fxckcode/chatwoot-skills.git /tmp/chatwoot-skills
 cp -r /tmp/chatwoot-skills/skills/chatwoot .claude/skills/chatwoot
 ```
 
@@ -40,7 +40,7 @@ See the [official Claude Skills documentation](https://docs.anthropic.com/en/doc
 Clone the repo and symlink the skill into Cursor's skills directory:
 
 ```bash
-git clone https://github.com/fxckcode/chatwoot-integration-guide.git ~/.cursor/skills/chatwoot-integration-guide
+git clone https://github.com/fxckcode/chatwoot-skills.git ~/.cursor/skills/chatwoot-skills
 ```
 
 Cursor auto-discovers skills under `~/.cursor/skills/`. Restart Cursor to pick it up.
@@ -50,7 +50,7 @@ Cursor auto-discovers skills under `~/.cursor/skills/`. Restart Cursor to pick i
 Copy the `skills/` directory into your Codex skills path:
 
 ```bash
-git clone https://github.com/fxckcode/chatwoot-integration-guide.git /tmp/chatwoot-skills
+git clone https://github.com/fxckcode/chatwoot-skills.git /tmp/chatwoot-skills
 cp -r /tmp/chatwoot-skills/skills/chatwoot ~/.codex/skills/chatwoot
 ```
 
@@ -61,10 +61,10 @@ See the [Agent Skills specification](https://agentskills.io/specification) for t
 Clone the entire repo into the OpenCode skills directory:
 
 ```bash
-git clone https://github.com/fxckcode/chatwoot-integration-guide.git ~/.opencode/skills/chatwoot-integration-guide
+git clone https://github.com/fxckcode/chatwoot-skills.git ~/.opencode/skills/chatwoot-skills
 ```
 
-Do not copy only the inner `skills/` folder — clone the full repo so the directory structure is `~/.opencode/skills/chatwoot-integration-guide/skills/chatwoot/SKILL.md`.
+Do not copy only the inner `skills/` folder — clone the full repo so the directory structure is `~/.opencode/skills/chatwoot-skills/skills/chatwoot/SKILL.md`.
 
 OpenCode auto-discovers all `SKILL.md` files under `~/.opencode/skills/`. No config file changes needed. Skills become available after restarting OpenCode.
 
@@ -77,7 +77,7 @@ hermes skill install chatwoot
 Or clone and symlink from the Hermes skills directory:
 
 ```bash
-git clone https://github.com/fxckcode/chatwoot-integration-guide.git ~/.hermes/skills/chatwoot-integration-guide
+git clone https://github.com/fxckcode/chatwoot-skills.git ~/.hermes/skills/chatwoot-skills
 ```
 
 ## What's inside
@@ -110,7 +110,7 @@ git clone https://github.com/fxckcode/chatwoot-integration-guide.git ~/.hermes/s
 ## Repository structure
 
 ```
-chatwoot-integration-guide/
+chatwoot-skills/
 ├── .claude-plugin/
 │   ├── plugin.json           # Agent Skills plugin metadata
 │   └── marketplace.json      # Marketplace registry

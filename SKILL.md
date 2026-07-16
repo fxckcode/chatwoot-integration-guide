@@ -1,5 +1,5 @@
 ---
-name: chatwoot-integration-guide
+name: chatwoot-skills
 description: >-
   Comprehensive skill for integrating Chatwoot — the open-source customer support platform — into any system. Covers setup, channels, live chat widget, features, automation, Captain AI, migrations, and best practices.
 license: MIT
