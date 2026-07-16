@@ -14,13 +14,14 @@ These skills follow the [Agent Skills specification](https://agentskills.io/spec
 ### via npx skills
 
 ```bash
-npx skills add git@github.com:fxckcode/chatwoot-integration-guide.git
+npx skills add fxckcode/chatwoot-integration-guide
 ```
 
-Or using HTTPS instead of SSH:
+Or using the full URL:
 
 ```bash
 npx skills add https://github.com/fxckcode/chatwoot-integration-guide
+npx skills add git@github.com:fxckcode/chatwoot-integration-guide.git
 ```
 
 ### via Claude Code
