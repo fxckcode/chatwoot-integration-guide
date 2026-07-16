@@ -3,16 +3,89 @@
 [![CI](https://github.com/fxckcode/chatwoot-integration-guide/actions/workflows/ci.yml/badge.svg)](https://github.com/fxckcode/chatwoot-integration-guide/actions/workflows/ci.yml)
 [![License](https://img.shields.io/github/license/fxckcode/chatwoot-integration-guide)](LICENSE)
 [![Chatwoot](https://img.shields.io/badge/Chatwoot-7B2FBE?logo=chatwoot)](https://www.chatwoot.com)
-[![Markdown](https://img.shields.io/badge/Markdown-000?logo=markdown)](https://daringfireball.net/projects/markdown/)
+[![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Spec-7B2FBE)](https://agentskills.io/specification)
 
-A comprehensive guide for integrating **Chatwoot** — the open-source customer support platform — into your systems. This repository contains structured documentation, practical examples, and an AI assistant skill that accelerates any Chatwoot integration.
+A comprehensive guide for integrating **Chatwoot** — the open-source customer support platform — into your systems. This repository contains structured documentation, practical examples, and an AI agent skill that accelerates any Chatwoot integration.
+
+These skills follow the [Agent Skills specification](https://agentskills.io/specification) so they can be used by any skills-compatible agent, including Claude Code, Codex, Cursor, OpenCode, and Hermes Agent.
+
+## Installation
+
+### via npx skills
+
+```bash
+npx skills add git@github.com:fxckcode/chatwoot-integration-guide.git
+```
+
+Or using HTTPS instead of SSH:
+
+```bash
+npx skills add https://github.com/fxckcode/chatwoot-integration-guide
+```
+
+### via Claude Code
+
+Add the contents of this repo to a `.claude/skills/` directory in your project root:
+
+```bash
+git clone https://github.com/fxckcode/chatwoot-integration-guide.git /tmp/chatwoot-skills
+cp -r /tmp/chatwoot-skills/skills/chatwoot .claude/skills/chatwoot
+```
+
+See the [official Claude Skills documentation](https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview#skills) for more details.
+
+### via Cursor
+
+Clone the repo and symlink the skill into Cursor's skills directory:
+
+```bash
+git clone https://github.com/fxckcode/chatwoot-integration-guide.git ~/.cursor/skills/chatwoot-integration-guide
+```
+
+Cursor auto-discovers skills under `~/.cursor/skills/`. Restart Cursor to pick it up.
+
+### via Codex
+
+Copy the `skills/` directory into your Codex skills path:
+
+```bash
+git clone https://github.com/fxckcode/chatwoot-integration-guide.git /tmp/chatwoot-skills
+cp -r /tmp/chatwoot-skills/skills/chatwoot ~/.codex/skills/chatwoot
+```
+
+See the [Agent Skills specification](https://agentskills.io/specification) for the standard skill format.
+
+### via OpenCode
+
+Clone the entire repo into the OpenCode skills directory:
+
+```bash
+git clone https://github.com/fxckcode/chatwoot-integration-guide.git ~/.opencode/skills/chatwoot-integration-guide
+```
+
+Do not copy only the inner `skills/` folder — clone the full repo so the directory structure is `~/.opencode/skills/chatwoot-integration-guide/skills/chatwoot/SKILL.md`.
+
+OpenCode auto-discovers all `SKILL.md` files under `~/.opencode/skills/`. No config file changes needed. Skills become available after restarting OpenCode.
+
+### via Hermes Agent
+
+```bash
+hermes skill install chatwoot
+```
+
+Or clone and symlink from the Hermes skills directory:
+
+```bash
+git clone https://github.com/fxckcode/chatwoot-integration-guide.git ~/.hermes/skills/chatwoot-integration-guide
+```
 
 ## What's inside
 
-- **SKILL.md** — AI assistant skill for Cursor, Claude Code, Codex, etc. to automatically integrate Chatwoot into projects
+- **AI skill** (`skills/chatwoot/SKILL.md`) — For Claude Code, Codex, Cursor, OpenCode, Hermes, and any Agent Skills-compatible agent
 - **136+ articles** — Full Chatwoot User Guide documentation categorized in markdown
 - **Category-based guides** — Chatwoot 101, setup, channels, features, automation, Captain AI, migrations, and more
 - **Practical examples** — Code snippets, configurations, and real-world workflows
+- **Self-hosted docs** — 39 pages covering deployment on Linux VM, Docker, Kubernetes, cloud providers
 
 ## Categories
 
@@ -33,38 +106,17 @@ A comprehensive guide for integrating **Chatwoot** — the open-source customer 
 | 🛳️ Migrations | 4+ | From Zendesk, Freshdesk, Intercom, Front |
 | ⚙️ How To | 12+ | Troubleshooting, push notifications, access tokens, SAML |
 
-## Quick start
-
-### As an AI skill (recommended)
-
-AI assistants that support skills can load `SKILL.md` directly:
-
-```bash
-# In Cursor, Claude Code, Codex, OpenCode, etc.
-# Point to the skill in this repo
-```
-
-### Direct reading
-
-```bash
-# Navigate articles by category
-ls articles/
-
-# Read a specific article
-cat articles/getting-started-chatwoot-101.md
-
-# Search content
-grep -ri "webhook" articles/
-```
-
 ## Repository structure
 
 ```
 chatwoot-integration-guide/
-├── SKILL.md              # Main skill for AI assistants
-├── AGENTS.md             # AI agent context
-├── RULES.md              # Project conventions
-├── articles/             # Categorized documentation
+├── .claude-plugin/
+│   ├── plugin.json           # Agent Skills plugin metadata
+│   └── marketplace.json      # Marketplace registry
+├── skills/
+│   └── chatwoot/
+│       └── SKILL.md          # Main AI agent skill
+├── articles/                 # Categorized documentation
 │   ├── chatwoot-101/
 │   ├── setup-account/
 │   ├── other-channels/
@@ -80,9 +132,31 @@ chatwoot-integration-guide/
 │   ├── migrations/
 │   ├── how-to/
 │   └── other-topics/
-├── references/           # Technical references
-├── .github/              # Templates and workflows
+├── references/
+│   └── self-hosted/          # Deployment and developer docs
+├── AGENTS.md                 # AI agent context
+├── RULES.md                  # Project conventions
+├── .github/                  # CI, release, issue/PR templates
 └── README.md
+```
+
+## Skills
+
+| Skill | Description |
+|-------|-------------|
+| **chatwoot** | Integrate Chatwoot into any system — setup channels, live chat widget, Captain AI, webhooks, API, and migrations |
+
+## Direct reading
+
+```bash
+# Navigate articles by category
+ls articles/
+
+# Read a specific article
+cat articles/chatwoot-101/getting-started-chatwoot-101.md
+
+# Search content
+grep -ri "webhook" articles/
 ```
 
 ## Contributing
