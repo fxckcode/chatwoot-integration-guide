@@ -1,0 +1,15 @@
+{
+  "name": "chatwoot-integration-guide",
+  "owner": {
+    "name": "Diego Duran",
+    "url": "https://github.com/fxckcode"
+  },
+  "plugins": [
+    {
+      "name": "chatwoot",
+      "source": "./",
+      "description": "Chatwoot integration skills for AI agents",
+      "version": "1.0.0"
+    }
+  ]
+}

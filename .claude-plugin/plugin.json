@@ -1,0 +1,20 @@
+{
+  "name": "chatwoot",
+  "version": "1.0.0",
+  "description": "Comprehensive Chatwoot integration skill — setup channels, live chat widget, Captain AI, webhooks, API, and migrations. Use when integrating Chatwoot into any system.",
+  "author": {
+    "name": "Diego Duran",
+    "url": "https://github.com/fxckcode"
+  },
+  "repository": "https://github.com/fxckcode/chatwoot-integration-guide",
+  "license": "MIT",
+  "keywords": [
+    "chatwoot",
+    "customer-support",
+    "live-chat",
+    "whatsapp",
+    "integration",
+    "helpdesk",
+    "open-source"
+  ]
+}
