@@ -1,0 +1,58 @@
+## Linux VM
+
+Whenever a new version of Chatwoot is released, use the following steps to upgrade your instance.
+
+To install `cwctl`, refer to the [Chatwoot CTL guide](https://developers.chatwoot.com/self-hosted/deployment/chatwoot-ctl#install-or-upgrade-chatwoot-ctl).
+
+If you are on an older version of Chatwoot(< 2.7), follow the [manual upgrade steps](https://developers.chatwoot.com/self-hosted/deployment/linux-vm#upgrading-to-a-newer-version-of-chatwoot) if you face errors with `cwctl`.
+
+```shellscript
+sudo cwctl --upgrade
+```
+
+Before upgrading, review the release notes for versions between your current installation and the target version. If your installation is very old, upgrade iteratively through intermediate versions instead of jumping directly to the latest release. This helps you apply required migrations and configuration changes in the expected order. Use the [specific version upgrade flow](https://developers.chatwoot.com/self-hosted/deployment/chatwoot-ctl#upgrading-to-a-specific-version-or-branch) when you need to stop at an intermediate Linux VM version, and test the upgrade on a staging instance first.
+
+This upgrade method is applicable for all manual Linux installations, including installations using AWS Marketplace.
+
+## Docker
+
+Update the images using the latest image from chatwoot.
+
+If your installation is very old, upgrade iteratively through intermediate Docker image tags instead of jumping directly to the latest image. Review the release notes between versions, update the image tag in your Docker Compose file for each target version, and run the database preparation step after each upgrade.
+
+```shellscript
+docker compose down
+docker compose pull
+docker compose up -d
+```
+
+Run the database preparation task after starting the containers with the updated image.
+
+```shellscript
+docker compose run --rm rails bundle exec rails db:chatwoot_prepare
+```
+
+## Helm(Kubernetes)
+
+This upgrade guide is applicable for Chatwoot DigitalOcean 1-click k8s app and any other Kubernetes deployment using `charts`.
+
+Do `helm repo update` and check the version of charts that is going to be installed. Helm charts follows semantic versioning and so if the MAJOR version is different from your installed version, there might be breaking changes. Please refer to the changelog before upgrading.
+
+```shellscript
+# update helm repositories
+helm repo update
+# list your current installed version
+helm list
+# show the latest version of charts that is going to be installed
+helm search repo chatwoot
+```
+
+```shellscript
+#if it is major version update, refer to the changelog before proceeding
+helm upgrade chatwoot chatwoot/chatwoot -f <your-custom-values>.yaml
+```
+
+## Heroku
+
+1. Pull the latest changes from Chatwoot github repo to your fork. Use the fetch upstream changes feature on Github.
+2. Deploy the latest branch to your heroku app.

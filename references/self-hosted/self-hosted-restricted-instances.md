@@ -1,0 +1,91 @@
+This guide outlines the necessary configurations for deploying Chatwoot in environments with restricted internal networks, ensuring full functionality and compliance.
+
+## Activating Licenses
+
+Licensing is critical for the operational legality and functionality of Chatwoot:
+
+### Whitelist Licensing Server
+
+Add `https://hub.2.chatwoot.com` to your network’s whitelist for license activation and management of Stripe payment links.
+
+### Switch to Email Invoices
+
+For organizations preferring email invoices, contact our sales team at `sales@chatwoot.com` with your installation identifier to configure this billing option.
+
+## Enabling ChatWidget for Users
+
+To ensure seamless functionality of the ChatWidget within restricted networks, perform the following configurations:
+
+### WebSockets
+
+Enable WebSocket connections through `wss://yourdomain.com/cable` to facilitate real-time communications.
+
+### Widget API URLs
+
+Open all API endpoints under the widget path to ensure full functionality. Configure your network to allow access to:
+
+```text
+https://yourdomain.com/api/v1/widget/*
+```
+
+This wildcard approach ensures all necessary widget functionalities such as conversation handling, message management, and contact updates are operable without individual endpoint specifications.
+
+### Widget Assets
+
+Make sure that all static and media assets the widget loads are accessible. The widget pulls from four paths:
+
+```text
+https://yourdomain.com/packs
+https://yourdomain.com/vite/assets
+https://yourdomain.com/brand-assets
+https://yourdomain.com/rails/active_storage
+```
+
+- **`/packs`** — the SDK loader script (`packs/js/sdk.js`) embedded into the parent page.
+- **`/vite/assets`** — JavaScript and CSS bundles loaded inside the widget iframe. Chatwoot migrated this UI from Webpack to Vite, so older guides referring only to `/packs` are incomplete for newer deployments.
+- **`/brand-assets`** — installation-level branding (logo, favicon) shown inside the widget.
+- **`/rails/active_storage`** — stored image and file attachment URLs. Without this, attachments can display as broken images or inaccessible files in the widget.
+
+All four paths must be publicly accessible to support the widget fully.
+
+Visitor file uploads are handled through the widget API endpoints covered above. If you use an external storage service such as S3, GCS, Azure Storage, or another S3-compatible provider, Chatwoot still generates `/rails/active_storage/...` URLs first and then redirects the browser to the storage provider’s signed URL. In that setup, make sure visitors can also reach the storage provider or CDN hostname.
+
+### Widget Page
+
+The Chatwoot SDK loads the chat UI by injecting an iframe whose `src` points to `/widget`. This path must also be publicly accessible for the widget to render:
+
+```text
+https://yourdomain.com/widget
+```
+
+Without this, the SDK script loads correctly but the iframe fails to load, resulting in a missing chat bubble. This commonly affects deployments behind authentication gateways such as Cloudflare Access, basic auth, or other ZTNA proxies.
+
+## SMTP Configuration for Emails
+
+Proper SMTP setup is essential for managing email communications within restricted networks:
+
+### SMTP Server Details
+
+Configure your SMTP server to handle outgoing emails from Chatwoot, including server address, port, authentication details, and secure connection protocols.
+
+### Secure Connections
+
+Employ TLS/SSL for secure email transmissions, ensuring your network permits connections over the designated SMTP port (commonly 587 for TLS).
+
+## Additional Configuration for Restricted Networks
+
+Additional considerations are necessary for the optimal operation of Chatwoot in restricted environments:
+
+### DNS Configuration
+
+Ensure DNS settings are optimized to reduce resolution times and enhance the accessibility of Chatwoot services.
+
+### SSL/TLS Configuration
+
+Maintain up-to-date SSL/TLS certificates that are compatible with all internal systems and browsers.
+
+### Monitoring and Logging
+
+Implement comprehensive monitoring and logging solutions to swiftly detect and address potential disruptions, maintaining system stability and performance.
+
+By following these detailed instructions, your Chatwoot deployment can effectively operate within restricted network environments, ensuring a robust and secure customer support platform.
